@@ -1,3 +1,0 @@
-/mvnw text eol=lf
-*.cmd text eol=crlf
-.vscode/ settings.json merge=union
