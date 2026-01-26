@@ -1,7 +1,8 @@
 package com.shopifyy.shopifyy.request;
 
 import java.math.BigDecimal;
-import java.util.Locale.Category;
+
+import com.shopifyy.shopifyy.model.Category;
 
 import lombok.Data;
 
@@ -15,3 +16,4 @@ public class AddProductRequest {
     private String description;
     private Category category;
 }
+

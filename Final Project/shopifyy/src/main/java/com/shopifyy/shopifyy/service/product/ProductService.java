@@ -1,7 +1,10 @@
 package com.shopifyy.shopifyy.service.product;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -148,6 +151,27 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public List<Product> findDistinctProductsByName(){
+        List<Product> products = getAllProducts();
+        Map<String, Product> distinctProductMap = products.stream()
+                .collect(Collectors.toMap(
+                        Product :: getName,
+                        product -> product,
+                        (existing, replacement) -> existing));
+        return new ArrayList<>(distinctProductMap.values());
+    }
+
+    @Override
+    public List<String> getAllDistinctBrands(){
+        return productRepository.findAll()
+                .stream()
+                .map(Product :: getBrand)
+                .distinct()
+                .toList();
+    }
+
+
+    @Override
     public List<ProductDto> getConvertedProducts(List<Product> products) {
         return products.stream().map(this::convertToDto).toList();
     }
@@ -163,6 +187,8 @@ public class ProductService implements IProductService {
         return productDto;
     }
 
-
+    @Override
+    public List<Product> getProductsByCategoryId(Long categoryId) {
+        return productRepository.findAllByCategoryId(categoryId);
+    }
 }
-

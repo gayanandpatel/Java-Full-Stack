@@ -9,3 +9,5 @@ import com.shopifyy.shopifyy.model.Image;
 public interface ImageRepository extends JpaRepository<Image, Long> {
     List<Image> findByProductId(Long id);
 }
+
+

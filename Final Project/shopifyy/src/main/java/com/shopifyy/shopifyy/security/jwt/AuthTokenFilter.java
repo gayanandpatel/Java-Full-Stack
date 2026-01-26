@@ -1,8 +1,9 @@
 package com.shopifyy.shopifyy.security.jwt;
 
 import java.io.IOException;
-
+import com.shopifyy.shopifyy.response.ErrorResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,15 +11,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.shopifyy.shopifyy.response.ErrorResponse;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shopifyy.shopifyy.security.user.ShopUserDetailsService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.NonNull;
-import tools.jackson.databind.ObjectMapper;
 
 @Component
 public class AuthTokenFilter extends OncePerRequestFilter {

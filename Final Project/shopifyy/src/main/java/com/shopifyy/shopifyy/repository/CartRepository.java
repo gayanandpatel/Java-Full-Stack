@@ -7,3 +7,5 @@ import com.shopifyy.shopifyy.model.Cart;
 public interface CartRepository extends JpaRepository<Cart, Long> {
     Cart findByUserId(Long userId);
 }
+
+

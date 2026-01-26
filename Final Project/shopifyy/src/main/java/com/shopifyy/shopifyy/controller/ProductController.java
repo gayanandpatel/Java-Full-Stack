@@ -97,4 +97,16 @@ public class ProductController {
         List<ProductDto> convertedProducts = productService.getConvertedProducts(products);
         return ResponseEntity.ok(new ApiResponse("success", convertedProducts));
     }
+
+    @GetMapping("/distinct/products")
+    public ResponseEntity<ApiResponse> getDistinctProducts() {
+        // 1. Call the service method you already created
+        List<Product> products = productService.findDistinctProductsByName();
+        
+        // 2. Convert to DTOs (to handle images/data structure)
+        List<ProductDto> convertedProducts = productService.getConvertedProducts(products);
+        
+        // 3. Return the response
+        return ResponseEntity.ok(new ApiResponse("Distinct products found!", convertedProducts));
+    }
 }

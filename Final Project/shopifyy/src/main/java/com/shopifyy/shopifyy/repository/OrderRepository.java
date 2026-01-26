@@ -9,3 +9,5 @@ import com.shopifyy.shopifyy.model.Order;
 public interface OrderRepository extends JpaRepository<Order, Long> {
     List<Order> findByUserId(Long userId);
 }
+
+
